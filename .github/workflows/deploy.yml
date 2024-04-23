@@ -46,4 +46,4 @@ jobs:
             sudo docker pull odioni>/phonebook:latest
             sudo docker stop phonebook || true
             sudo docker rm phonebook || true
-            sudo docker run -d --name phonebook-p 9000:9000 odioni/phonebook:latest
+            sudo docker run -d --name phonebook -p 9000:9000 odioni/phonebook:latest
