@@ -6,5 +6,6 @@
 	</typeAliases>
 	<mappers>
 		<mapper resource="mybatis/mappers/phonebook.xml" />
+		
 	</mappers>
 </configuration>
