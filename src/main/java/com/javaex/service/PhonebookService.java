@@ -14,6 +14,7 @@ public class PhonebookService {
 	@Autowired
 	private PhonebookDao phonebookDao;
 	
+	
 	//리스트
 	public List<PhonebookVo> exePhoneList(){
 		System.out.println("PhonebookService.exePhoneList()");
