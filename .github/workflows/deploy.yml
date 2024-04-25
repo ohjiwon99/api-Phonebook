@@ -43,7 +43,7 @@ jobs:
           username: ${{ secrets.EC2_USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            sudo docker pull odioni>/phonebook:latest
+            sudo docker pull odioni/phonebook:latest
             sudo docker stop phonebook || true
             sudo docker rm phonebook || true
             sudo docker run -d --name phonebook -p 9000:9000 odioni/phonebook:latest
