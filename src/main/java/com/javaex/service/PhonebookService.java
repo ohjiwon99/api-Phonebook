@@ -10,43 +10,54 @@ import com.javaex.vo.PhonebookVo;
 
 @Service
 public class PhonebookService {
-
+	
 	@Autowired
 	private PhonebookDao phonebookDao;
 	
-	
 	//리스트
-	public List<PhonebookVo> exePhoneList(){
-		System.out.println("PhonebookService.exePhoneList()");
-		List<PhonebookVo> phonebookList = phonebookDao.phonebookList();
+	public List<PhonebookVo> exeList() {
+		System.out.println("PhonebookService.exeList()");
+		
+		List<PhonebookVo> phonebookList = phonebookDao.addSelectList();
+		System.out.println(phonebookList);
 		return phonebookList;
 	}
 	
-	//등록 
-	public int exeAddPhone(PhonebookVo phonebookVo) {
-		System.out.println("PhonebookService.exeAddPhone()");
-		int count = phonebookDao.addPhone(phonebookVo);
+	//등록
+	public int exeAddList(PhonebookVo phonebookVo) {
+		System.out.println("PhonebookService.exeAddList");
+		
+		int count = phonebookDao.insertSelectKey(phonebookVo);
+		
 		return count;
 	}
 	
 	//삭제
-	public int exeDeletePhone(PhonebookVo phonebookVo) {
-		System.out.println("PhonebookService.exeDeletePhone()");
-		int count = phonebookDao.deletePhone(phonebookVo); 
+	
+	public int exeDelete(PhonebookVo phonebookVo) {
+		System.out.println("PhonebookService.exeDelete()");
+		
+		int count = phonebookDao.idDelete(phonebookVo);
+		
 		return count;
 	}
 	
-	//데이터 한 개 가져오기 
+	//수정폼
 	public PhonebookVo exeModifyForm(int personId) {
-		System.out.println("PhonebookService.exeModifyPhone()");
-		PhonebookVo phonebookVo = phonebookDao.selectOne(personId); 
-		return phonebookVo;
+		System.out.println("PhonebookService.exeModifyForm()");
+		PhonebookVo pVo = phonebookDao.selectOne(personId);
+		
+		return pVo;
 	}
 	
 	//수정
-	public int exeModifyPhone(PhonebookVo phonebookVo) {
-		System.out.println("PhonebookService.exeModifyPhone()");
-		int count = phonebookDao.modifyPhone(phonebookVo); 
+	public int exeModify(PhonebookVo phonebookVo) {
+		System.out.println("PhonebookService.exeModify");
+		
+		int count = phonebookDao.modifyUser(phonebookVo);
+		
 		return count;
+		
 	}
+	
 }

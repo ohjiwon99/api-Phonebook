@@ -10,45 +10,54 @@ import com.javaex.vo.PhonebookVo;
 
 @Repository
 public class PhonebookDao {
-
+	
 	@Autowired
 	private SqlSession sqlSession;
 	
-	//리스트
-	public List<PhonebookVo> phonebookList(){
-		System.out.println("PhonebookDao.phonebookList()");
+	public List<PhonebookVo> addSelectList() {
+		System.out.println("PhonebookDao.addSelectList");
 		
-		List<PhonebookVo> phonebookList = sqlSession.selectList("phonebook.list");
+		List<PhonebookVo> phonebookList = sqlSession.selectList("phonebook.selectList");
 		System.out.println(phonebookList);
+		
 		return phonebookList;
 	}
 	
 	//등록
-	public int addPhone(PhonebookVo phonebookVo) {
-		System.out.println("PhonebookDao.addPhone()");
-		int count = sqlSession.insert("phonebook.add", phonebookVo );
+	
+	public int insertSelectKey(PhonebookVo phonebookVo) {
+		System.out.println("PhonebookDao.insertSelectKey()");
+		
+		int count = sqlSession.insert("phonebook.insertSelectKey", phonebookVo);
+		
+		
 		return count;
 	}
 	
 	//삭제
-	public int deletePhone(PhonebookVo phonebookVo) {
-		System.out.println("PhonebookDao.deletePhone()");
+	
+	public int idDelete(PhonebookVo phonebookVo) {
+		System.out.println("PhonebookDao.idDelete()");
+		
 		int count = sqlSession.delete("phonebook.delete", phonebookVo);
+		
 		return count;
 	}
 	
-	// 한 명 정보 데려오기
+	//수정폼
 	public PhonebookVo selectOne(int no) {
 		System.out.println("PhonebookDao.selectOne()");
-		PhonebookVo phoneVo = sqlSession.selectOne("phonebook.selectOne", no);
-		return phoneVo;
+		PhonebookVo pVo = sqlSession.selectOne("phonebook.selectOne", no);
+		
+		return pVo;
 	}
 	
 	//수정
-	public int modifyPhone(PhonebookVo phonebookVo) {
+	public int modifyUser(PhonebookVo phonebookVo) {
 		System.out.println("PhonebookDao.modifyPhone()");
-		int count = sqlSession.update("phonebook.update", phonebookVo);
+		
+		int count = sqlSession.update("phonebook.modify",phonebookVo);
 		return count;
 	}
-	
+
 }
